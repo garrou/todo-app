@@ -14,6 +14,7 @@ Refresh Gradle
 
 ```sh
 cd .\todo_app\android\  
+./gradlew clean build
 ./gradlew --refresh-dependecies  
 ```
 
