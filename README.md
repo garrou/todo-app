@@ -10,8 +10,11 @@ Flutter Todo application
 
 ## Requirements
 
-`Refresh Gradle`
+After add all requirements for Firebase and Google  
+
+`
 cd .\todo_app\android\  
 ./gradlew --refresh-dependecies  
+`
 
 
