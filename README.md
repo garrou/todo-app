@@ -12,9 +12,9 @@ Flutter Todo application
 
 Refresh Gradle  
 
-`
+```sh
 cd .\todo_app\android\  
 ./gradlew --refresh-dependecies  
-`
+```
 
 
