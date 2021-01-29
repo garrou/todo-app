@@ -24,7 +24,7 @@ class LoginBody extends StatefulWidget {
 
 class _LoginBodyState extends State<LoginBody> {
 
-  FirebaseUser _user;
+  User _user;
 
   @override
   void initState() {
@@ -35,7 +35,7 @@ class _LoginBodyState extends State<LoginBody> {
   void click() {
     signInWithGoogle().then((user) => {
       this._user = user,
-      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(this._user.displayName)))
+      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(this._user)))
     });
   }
 
@@ -54,7 +54,7 @@ class _LoginBodyState extends State<LoginBody> {
           children: <Widget>[
             Image(
               image: AssetImage('assets/google_logo.png'),
-              height: 35
+              height: 64
             ),
             Padding(
               padding: EdgeInsets.only(left: 10),
@@ -72,11 +72,21 @@ class _LoginBodyState extends State<LoginBody> {
     );
   }
 
+  Widget logoApp() {
+    return Image(
+      image: AssetImage('assets/todo.png'),
+      height: 512,
+      alignment: Alignment.center
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.center,
-      child: this.googleLoginButton()
+    return Column(
+      children: <Widget>[
+        this.logoApp(),
+        this.googleLoginButton()
+      ]
     );
   }
 }
