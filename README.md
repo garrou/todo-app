@@ -2,7 +2,7 @@
 
 Flutter Todo application
 
-![Alt text](git-img/flutterfire.png?raw=true "FlutterFire")  
+![Alt text](git-img/flutterfirebase.png?raw=true "FlutterFire")  
 
 ## Features
 
