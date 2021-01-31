@@ -6,8 +6,9 @@ Flutter Todo application
 
 ## Features
 
-* Login with **Google** and **Firebase**  
-* Add thing todo  
+* Login with **Google**  
+* Add task in **Firebase**    
+* See task details  
 * Check realised task  
 * Remove task  
 
