@@ -1,7 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 
 class Todo {
-
   DatabaseReference _id;
   String title;
   String details;
@@ -30,4 +29,14 @@ class Todo {
       'addedAt': this.addedAt
     };
   }
+}
+
+// Convert a database record to a Todo object
+Todo createTodo(record) {
+  Map<String, dynamic> attributes = {'title': '', 'details': '', 'addedAt': ''};
+
+  record.forEach((key, value) => {attributes[key] = value});
+
+  return new Todo(
+      attributes['title'], attributes['details'], attributes['addedAt']);
 }

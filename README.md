@@ -1,5 +1,8 @@
 # TodoApp
+
 Flutter Todo application
+
+![Alt text](git-img/flutterfire.png?raw=true "FlutterFire")  
 
 ## Features
 
@@ -10,12 +13,12 @@ Flutter Todo application
 
 ## Requirements
 
-Refresh Gradle  
+Refresh Gradle
 
 ```sh
 cd .\todo_app\android\  
 ./gradlew clean build
-./gradlew --refresh-dependecies  
+./gradlew --refresh-dependencies  
 ```
 
 
