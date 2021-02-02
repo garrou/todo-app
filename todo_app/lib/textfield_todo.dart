@@ -11,6 +11,7 @@ class TextFieldTodo extends StatefulWidget {
 class _TextFieldTodoState extends State<TextFieldTodo> {
   final _controller = TextEditingController();
 
+  // When user click on textfield save button
   void save() {
     FocusScope.of(context).unfocus();
     widget.callback(this._controller.text);
@@ -27,6 +28,7 @@ class _TextFieldTodoState extends State<TextFieldTodo> {
                 prefixIcon: Icon(Icons.edit),
                 labelText: 'Type a task todo',
                 suffixIcon: IconButton(
+                  color: Colors.green,
                   icon: Icon(Icons.save),
                   onPressed: this.save,
                   tooltip: 'Press to save task',

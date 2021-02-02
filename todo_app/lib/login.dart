@@ -24,9 +24,9 @@ class _LoginBodyState extends State<LoginBody> {
   @override
   void initState() {
     super.initState();
-    signOutGoogle();
   }
 
+  // On click on google button
   void click() {
     signInWithGoogle().then((user) => {
           this._user = user,
@@ -35,6 +35,7 @@ class _LoginBodyState extends State<LoginBody> {
         });
   }
 
+  // Google login button
   Widget googleLoginButton() {
     return OutlineButton(
         onPressed: this.click,
@@ -61,15 +62,21 @@ class _LoginBodyState extends State<LoginBody> {
             )));
   }
 
+  // Logo application
   Widget logoApp() {
     return Image(
-        image: AssetImage('assets/todo.png'),
-        height: 512,
+        image: AssetImage('assets/to-do.png'),
+        height: 256,
         alignment: Alignment.center);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[this.logoApp(), this.googleLoginButton()]);
+    return Scaffold(
+        body: Column(children: <Widget>[
+      Center(
+          child: Container(margin: EdgeInsets.all(20), child: this.logoApp())),
+      this.googleLoginButton()
+    ]));
   }
 }

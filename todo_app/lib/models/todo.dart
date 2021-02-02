@@ -3,40 +3,34 @@ import 'package:firebase_database/firebase_database.dart';
 class Todo {
   DatabaseReference _id;
   String title;
-  String details;
   String addedAt;
   bool removed = false;
   bool done = false;
 
-  Todo(this.title, this.details, this.addedAt);
+  // Constructor
+  Todo(this.title, this.addedAt);
 
-  void remove() {
-    this.removed = true;
-  }
-
-  void realised() {
-    this.done = true;
-  }
-
+  // Set an id to a post
   void setId(DatabaseReference id) {
     this._id = id;
   }
 
+  // Get the id of the todo
+  DatabaseReference getId() {
+    return this._id;
+  }
+
+  // Parse todo in json object
   Map<String, String> toJson() {
-    return {
-      'title': this.title,
-      'details': this.details,
-      'addedAt': this.addedAt
-    };
+    return {'title': this.title, 'addedAt': this.addedAt};
   }
 }
 
 // Convert a database record to a Todo object
 Todo createTodo(record) {
-  Map<String, dynamic> attributes = {'title': '', 'details': '', 'addedAt': ''};
+  Map<String, String> attributes = {'title': '', 'addedAt': ''};
 
   record.forEach((key, value) => {attributes[key] = value});
 
-  return new Todo(
-      attributes['title'], attributes['details'], attributes['addedAt']);
+  return new Todo(attributes['title'], attributes['addedAt']);
 }

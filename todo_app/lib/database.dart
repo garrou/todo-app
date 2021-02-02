@@ -29,3 +29,8 @@ Future<List<Todo>> getAllTasks() async {
 
   return tasks;
 }
+
+// Delete from database where todo id == id
+void deleteTask(DatabaseReference id) async {
+  await databaseReference.child('todos').child(id.key).remove();
+}

@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/add_todo.dart';
+import 'package:todo_app/auth.dart';
 import 'package:todo_app/database.dart';
+import 'package:todo_app/login.dart';
 import 'package:todo_app/models/todo.dart';
 import 'package:todo_app/todo_list.dart';
 
@@ -24,6 +26,14 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
+  // Disconnect and go to login
+  void disconectGoToLogin() {
+    signInWithGoogle();
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
+  }
+
+  // Go to add page on button press
   void goToAddPage() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => AddTodo(widget.user)));
@@ -40,28 +50,34 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('TODO'),
+          centerTitle: true,
+          title: const Text('TODO'),
+          actions: [
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: IconButton(
+                    icon: Icon(Icons.logout),
+                    tooltip: 'Logout',
+                    onPressed: disconectGoToLogin,
+                    splashColor: Colors.blue))
+          ],
         ),
-        body: Column(
-          children: <Widget>[
-            Container(
+        body: Column(children: <Widget>[
+          Container(
               margin: EdgeInsets.all(20),
               child: Text(widget.user.displayName + '\'s todo',
                   style: TextStyle(
-                    color: Colors.green,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  )),
-            ),
-            Expanded(child: TodoList(this._thingsTodo)),
-            Container(
-                margin: EdgeInsets.all(20),
-                child: FloatingActionButton.extended(
-                    onPressed: goToAddPage,
-                    label: Text('Add a task'),
-                    icon: Icon(Icons.add),
-                    backgroundColor: Colors.green))
-          ],
-        ));
+                      color: Colors.blue,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold))),
+          Expanded(child: TodoList(this._thingsTodo)),
+          Container(
+              margin: EdgeInsets.all(20),
+              child: FloatingActionButton.extended(
+                  onPressed: goToAddPage,
+                  label: const Text('Add a task'),
+                  icon: Icon(Icons.add),
+                  backgroundColor: Colors.blue))
+        ]));
   }
 }

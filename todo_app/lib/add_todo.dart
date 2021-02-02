@@ -16,8 +16,8 @@ class AddTodo extends StatefulWidget {
 class _AddTodoState extends State<AddTodo> {
   // Add task in database
   void addTodo(String text) {
-    Todo toAdd = new Todo(text, widget.user.displayName,
-        DateFormat('dd/MM/yyyy').format(DateTime.now()));
+    Todo toAdd =
+        new Todo(text, DateFormat('dd/MM/yyyy').format(DateTime.now()));
     toAdd.setId(saveTodo(toAdd));
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => HomePage(widget.user)));
@@ -27,7 +27,8 @@ class _AddTodoState extends State<AddTodo> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Add a task'),
+          centerTitle: true,
+          title: const Text('Add a task'),
         ),
         body: Column(
             children: <Widget>[Expanded(child: TextFieldTodo(this.addTodo))]));
