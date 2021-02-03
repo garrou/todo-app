@@ -30,7 +30,11 @@ class _AddTodoState extends State<AddTodo> {
           centerTitle: true,
           title: const Text('Add a task'),
         ),
-        body: Column(
-            children: <Widget>[Expanded(child: TextFieldTodo(this.addTodo))]));
+        body: Column(children: <Widget>[
+          Container(
+              margin: EdgeInsets.only(top: 30),
+              child: Image(image: AssetImage('assets/add.png'), height: 64)),
+          Expanded(child: TextFieldTodo(this.addTodo))
+        ]));
   }
 }
