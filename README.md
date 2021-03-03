@@ -1,4 +1,4 @@
-# TodoApp
+# todo-app
 
 Flutter Todo application
 
